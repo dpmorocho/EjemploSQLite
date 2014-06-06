@@ -22,13 +22,13 @@ public class Helper extends SQLiteOpenHelper {
 	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL("create table empleados(codigo integer primary key, nombre text, importe double)");
+		db.execSQL("create table empleados(codigo integer primary key, nombre text, telefono integer)");
 	}
 	
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int versionAnt, int versionNue) {
 		db.execSQL("drop table if exists empleados");
-		db.execSQL("create table empleados(codigo integer primary key, nombre text, importe double)");
+		db.execSQL("create table empleados(codigo integer primary key, nombre text, telefono integer)");
 	}
 
 }

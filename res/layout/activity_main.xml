@@ -33,7 +33,7 @@
         android:layout_alignLeft="@+id/editText2"
         android:layout_below="@+id/editText2"
         android:layout_marginTop="15dp"
-        android:text="Importe"
+        android:text="Telefono"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -51,6 +51,7 @@
         android:layout_alignLeft="@+id/editText3"
         android:layout_below="@+id/editText3"
         android:layout_marginTop="28dp"
+        android:onClick="alta"
         android:text="Enviar" />
 
     <Button
@@ -60,6 +61,7 @@
         android:layout_alignBaseline="@+id/button1"
         android:layout_alignBottom="@+id/button1"
         android:layout_alignRight="@+id/editText3"
+        android:onClick="consulta"
         android:text="Consulta" />
 
     <TextView
