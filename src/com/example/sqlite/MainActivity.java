@@ -1,8 +1,18 @@
+/* MainActivity.java
+ * Autor: Diego Morocho
+ * Versión: 0.1.0 
+ * Fecha: 05/06/2014
+ * Descripción: Clase principal de invocación hacia las consultas SQLite y llamado a interfaces
+ * 
+ */
+
 package com.example.sqlite;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.content.Context;
+import android.database.sqlite.*;
 
 public class MainActivity extends Activity {
 
