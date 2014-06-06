@@ -11,15 +11,26 @@ package com.example.sqlite;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.*;
 
 public class MainActivity extends Activity {
+	//Delcaración de los inputs
+	private EditText et1, et2, et3;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		//Localizamos los inputs en la interfaz y le asignamos un identificador
+		et1 = (EditText) findViewById(R.id.editText1);
+		et2 = (EditText) findViewById(R.id.editText2);
+		et3 = (EditText) findViewById(R.id.editText3);
 	}
 
 	@Override
@@ -27,6 +38,31 @@ public class MainActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	
+	//Método para guardar un empleado
+	public void alta(View v) {
+		//Instanciar la clase Helper
+		Helper gestion = new Helper(this, "Gestion", null, 1);
+		SQLiteDatabase db = gestion.getWritableDatabase();
+		//Obtener los valores de los inputs
+		String codigo = et1.getText().toString();
+		String nombre = et2.getText().toString();
+		String importe = et3.getText().toString();
+		//Agrupar en forma de lista de valores
+		ContentValues registro = new ContentValues();
+		registro.put("codigo", codigo);
+		registro.put("nombre", nombre);
+		registro.put("importe", importe);
+		//Insertar valores en la base SQLite
+		db.insert("empleados", null, registro);
+		db.close();
+		//Limpiar los inputs
+		et1.setText("");
+		et2.setText("");
+		et3.setText("");
+		//Notificar si es correcto
+		Toast.makeText(this, "Los valores se han cargado correctamente", Toast.LENGTH_SHORT).show();
 	}
 
 }
