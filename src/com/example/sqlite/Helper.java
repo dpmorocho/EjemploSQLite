@@ -13,8 +13,22 @@ import android.app.Activity;
 import android.view.Menu;
 import android.content.Context;
 import android.database.sqlite.*;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
 
-public class Helper {
+public class Helper extends SQLiteOpenHelper {
+	public Helper(Context context, String nombre, CursorFactory factory, int version) {
+		super(context, nombre, factory, version);
+	}
 	
+	@Override
+	public void onCreate(SQLiteDatabase db) {
+		db.execSQL("create table empleados(codigo integer primary key, nombre text, importe double)");
+	}
+	
+	@Override
+	public void onUpgrade(SQLiteDatabase db, int versionAnt, int versionNue) {
+		db.execSQL("drop table if exists empleados");
+		db.execSQL("create table empleados(codigo integer primary key, nombre text, importe double)");
+	}
 
 }
